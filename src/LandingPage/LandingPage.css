@@ -1,0 +1,249 @@
+/* Estilo global */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Imagem de fundo adaptativa */
+body {
+  background-image: url("../IMAGENS/BACKGROUND/BACKGROUND.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* Alinha o conteúdo no fundo da página */
+}
+
+/* Estilo para o logotipo */
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+}
+
+.logo img {
+  width: 100px;
+  height: 160px;
+}
+
+/* Estilo para as redes sociais */
+.social-icons {
+  position: absolute;
+  top: 40px;
+  /* Ajuste conforme necessário para alinhar com o topo */
+  right: 60px;
+  /* Ajuste conforme necessário para alinhar com a direita */
+  display: flex;
+  align-items: center;
+}
+
+.social-icons a {
+  margin-left: 10px;
+  /* Espaçamento entre os ícones das redes sociais */
+}
+
+.social-icons img {
+  width: 40px;
+  /* Tamanho dos ícones das redes sociais */
+  height: 40px;
+  opacity: 0.7;
+  /* Opacidade para os ícones (opcional) */
+  transition: opacity 0.3s ease;
+  /* Transição suave da opacidade (opcional) */
+}
+
+.social-icons img:hover {
+  opacity: 1;
+  /* Aumenta a opacidade ao passar o mouse (opcional) */
+}
+
+/* Estilo para a barra de pesquisa */
+.search-bar {
+  position: absolute;
+  top: 40px;
+  /* Ajuste conforme necessário para alinhar com o topo */
+  left: 50%;
+  /* Posiciona a barra de pesquisa no centro horizontal */
+  transform: translateX(-50%);
+  /* Centraliza horizontalmente */
+  background-color: rgba(255,
+      255,
+      255,
+      1);
+  /* Cor de fundo*/
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+}
+
+.search-bar form {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input[type="text"] {
+  width: 300px;
+  /* Largura da caixa de texto */
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+/* Centraliza o conteúdo na página */
+.container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 100px;
+  /* Ajusta a distância do fundo da página */
+}
+
+/* Estilo da grade de imagens */
+.image-grid {
+  display: flex;
+  grid-template-columns: repeat(10, 140px);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 40px 10px;
+  /* Espaço entre as imagens */
+}
+
+/* Estilo dos paralelogramas */
+.paralelogramo {
+  position: relative;
+  width: 98px;
+  height: 114px;
+  background-color: red;
+  border: 7px solid white;
+  transform: skew(-12deg);
+  margin: 15px;
+  overflow: hidden;
+}
+
+.paralelogramo::before {
+  content: '';
+  position: absolute;
+  background-color: white;
+  z-index: 1;
+  border-radius: 0 0 25% 0;
+}
+
+.paralelogramo::after {
+  content: '';
+  position: absolute;
+  background-color: white;
+  z-index: 1;
+  border-radius: 25% 0 0 0;
+}
+
+
+.paralelogramo .top-left,
+.paralelogramo .bottom-right {
+  position: absolute;
+  z-index: 2;
+  font-weight: bold;
+  transform: skew(12deg);
+}
+
+.paralelogramo::before {
+  width: 60px;
+  height: 22px;
+  top: -2px;
+  left: -2px;
+}
+
+.paralelogramo::after {
+  width: 45px;
+  height: 26px;
+  bottom: -2px;
+  right: -2px;
+}
+
+.paralelogramo::before .top-left {
+  width: 60px;
+  height: 22px;
+  top: -2px;
+  left: -2px;
+}
+
+.paralelogramo .top-left {
+  font-family: 'Alien Encounters Solid';
+  top: 2px;
+  left: 8px;
+}
+
+.paralelogramo .bottom-right {
+  font-family: 'Alien Encounters Solid';
+  font-size: large;
+  bottom: 0px;
+  right: 10px;
+  color: black;
+}
+
+.prev-btn,
+.next-btn {
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+
+.prev-btn {
+  background-image: url("../IMAGENS/SETAS/SETA\ ESQUERDA.webp");
+  background-size: cover;
+  position: absolute;
+  left: 20px;
+}
+
+.next-btn {
+  background-image: url("../IMAGENS/SETAS/SETA\ DIREITA.webp");
+  background-size: cover;
+  position: absolute;
+  right: 20px;
+}
+
+/* Styles for the UserProfile component */
+.user-profile {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translateX(-50%);
+  /* Centraliza horizontalmente */
+  width: 150px;
+  border-radius: 50%;
+}
+
+.user-name {
+  background-color: red;
+  font-family: "Arial", sans-serif;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  bottom: 44%;
+  transform: translateX(-50%);
+  /* Centraliza horizontalmente */
+}
+
+.user-level {
+  background-color: red;
+  font-family: "Arial", sans-serif;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  bottom: 41%;
+  transform: translateX(-50%);
+  /* Centraliza horizontalmente */
+}
