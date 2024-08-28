@@ -181,100 +181,166 @@ body {
   cursor: pointer;
   background-color: transparent;
   border: none;
-  width: 50px;
+  width: 50px; /* Adjust based on your design needs */
   height: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth animations */
 }
 
 .prev-btn {
   background-image: url("../IMAGENS/SETAS/SETA\ ESQUERDA.webp");
-  background-size: cover;
   position: absolute;
   left: 20px;
 }
 
 .next-btn {
   background-image: url("../IMAGENS/SETAS/SETA\ DIREITA.webp");
-  background-size: cover;
   position: absolute;
   right: 20px;
 }
 
-/* Styles for the UserProfile component */
-.user-profile {
+.prev-btn:hover,
+.next-btn:hover {
+  opacity: 0.8; /* Slightly darken buttons on hover */
+}
+
+.prev-btn:active,
+.next-btn:active {
+  transform: scale(0.95); /* Slightly shrink buttons on click */
+}
+
+/* Container for user profile with shadow and rounded edges */
+.user-profile-container {
   position: absolute;
   left: 50%;
-  bottom: 50%;
+  bottom: 40%;
   transform: translateX(-50%);
-  width: 150px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    /* Centered radial gradient */ rgba(255, 255, 255, 0.8) 0%,
+    /* Bright white center for the cloud */ rgba(255, 255, 255, 0.5) 30%,
+    /* Lightening effect moving outwards */ rgba(135, 206, 235, 0.7) 70%,
+    /* Light blue sky color blending into the cloud */ rgba(135, 206, 235, 1)
+      100% /* Sky blue background */
+  );
+  padding: 40px 20px 40px 20px; /* Padding for spacing inside the container */
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 200px; /* Fixed width for consistency */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth animations */
+}
+
+.user-profile-container:hover {
+  background-color: rgba(255, 255, 255, 1); /* Brighten background on hover */
+  transform: translateX(-50%) translateY(-5px); /* Slight lift effect on hover */
+}
+
+/* Profile image with rounded borders and hover effect */
+.user-profile-image {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
+  border: 3px solid #fff;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease; /* Smooth transition for image scaling */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
-.user-name,
-.user-level {
-  background-color: red;
-  font-family: "Arial", sans-serif;
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
+/* Styling for the user name */
 .user-name {
-  bottom: 44%;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  color: #333; /* Darker color for contrast */
+  font-size: 18px;
+  margin: 0; /* Remove default margin */
+  padding: 5px 0;
 }
 
+/* Styling for the user level */
 .user-level {
-  bottom: 41%;
+  font-family: "Arial", sans-serif;
+  color: #666; /* Lighter gray for distinction */
+  font-size: 16px;
+  margin: 0; /* Remove default margin */
+  padding: 5px 0;
 }
 
 /* Media Queries */
 
-/* estilo para ecrãs de telemóvel */
-@media screen and (max-width: 1024px) {
-  .image-grid {
-    grid-template-columns: repeat(5, 130px);
-    grid-template-rows: repeat(2, auto);
-    grid-gap: 20px 5px;
+@media screen and (max-width: 870px) {
+  .user-profile-container {
+    width: 150px; /* Smaller width for mobile devices */
   }
 
-  .logo img {
-    width: 70px; /* Smaller width for mobile devices */
-    height: 110px; /* Smaller height for mobile devices */
+  .user-profile-image {
+    width: 80px; /* Smaller profile image */
+    height: 80px;
+  }
+
+  .user-name,
+  .user-level {
+    font-size: 14px; /* Smaller text for mobile */
   }
 }
 
-/* estilo para ecrãs de tablet */
+@media screen and (max-width: 580px) {
+  .image-grid {
+    grid-template-columns: repeat(3, 110px);
+    grid-template-rows: repeat(1, 140px);
+  }
+}
+
+@media screen and (min-width: 580px) and (max-width: 780px) {
+  .image-grid {
+    grid-template-columns: repeat(3, 130px);
+    grid-template-rows: repeat(1, 140px);
+  }
+}
+
+@media screen and (min-width: 780px) and (max-width: 870px) {
+  .image-grid {
+    grid-template-columns: repeat(5, 105px);
+    grid-template-rows: repeat(1, 140px);
+  }
+}
+
+@media screen and (min-width: 870px) and (max-width: 1024px) {
+  .image-grid {
+    grid-template-columns: repeat(5, 130px);
+    grid-template-rows: repeat(1, 140px);
+  }
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1399px) {
   .image-grid {
     grid-template-columns: repeat(5, 130px);
-    grid-template-rows: repeat(2, 95px);
+    grid-template-rows: repeat(1, 140px);
   }
 }
 
-/* estilo para ecrãs maiores */
 @media screen and (min-width: 1400px) and (max-width: 1649px) {
   .image-grid {
     grid-template-columns: repeat(10, 110px);
+    grid-template-rows: repeat(1, 140px);
   }
 }
 
-/* estilo para ecrãs muito grandes */
 @media screen and (min-width: 1650px) and (max-width: 1919px) {
   .image-grid {
     grid-template-columns: repeat(10, 130px);
+    grid-template-rows: repeat(1, 140px);
   }
 }
 
-/* estilo para ecrãs ultra largos */
 @media screen and (min-width: 1920px) {
   .image-grid {
     grid-template-columns: repeat(10, 150px);
   }
 }
 
-/* Media queries for larger screens */
-@media screen and (min-width: 1241px) {
+@media screen and (min-width: 1240px) {
   .social-icons {
     display: flex; /* Display social icons normally on larger screens */
   }
@@ -284,8 +350,178 @@ body {
   }
 }
 
+@media screen and (max-width: 580px) {
+  .search-bar {
+    width: 200px;
+  }
+  .logo {
+    top: 20px;
+    left: 10px;
+  }
+
+  .menu-button {
+    top: 20px;
+    right: 20px;
+  }
+
+  .social-icons {
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust to below the menu button */
+    right: -30px;
+    background: radial-gradient(
+      circle at 50% 50%,
+      /* Centered radial gradient */ rgba(255, 255, 255, 0.8) 0%,
+      /* Bright white center for the cloud */ rgba(255, 255, 255, 0.5) 30%,
+      /* Lightening effect moving outwards */ rgba(135, 206, 235, 0.7) 70%,
+      /* Light blue sky color blending into the cloud */ rgba(135, 206, 235, 1)
+        100% /* Sky blue background */
+    );
+    padding: 30px 20px 15px 20px; /* Add padding for spacing inside the menu */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft drop shadow for depth */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth animations */
+    transform: translateY(-10px); /* Slight upward transform when hidden */
+    opacity: 0; /* Invisible by default */
+    z-index: 1000; /* Ensure it's on top of other elements */
+  }
+
+  .social-icons.active {
+    display: flex; /* Show social icons when menu is active */
+    transform: translateY(0); /* Reset transform when active */
+    opacity: 1; /* Make it fully visible */
+  }
+
+  /* Menu button styles */
+  .menu-button {
+    display: block; /* Show menu button on smaller screens */
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    width: 50px; /* Size of the button */
+    height: 50px;
+    background: radial-gradient(
+      circle at 50% 50%,
+      /* Centered radial gradient */ rgba(255, 255, 255, 0.8) 0%,
+      /* Bright white center for the cloud */ rgba(255, 255, 255, 0.5) 30%,
+      /* Lightening effect moving outwards */ rgba(135, 206, 235, 0.7) 70%,
+      /* Light blue sky color blending into the cloud */ rgba(135, 206, 235, 1)
+        100% /* Sky blue background */
+    );
+    border: none; /* Remove default border */
+    border-radius: 50%; /* Make the button circular */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
+    cursor: pointer; /* Change cursor to pointer for interactivity */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth animations */
+    z-index: 1100; /* Ensure button is on top of other elements */
+  }
+
+  .menu-button:active {
+    transform: scale(0.95); /* Slightly shrink button on click for feedback */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Softer shadow when clicked */
+  }
+
+  .menu-button img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease; /* Smooth rotation effect */
+  }
+
+  .menu-button:active img {
+    transform: rotate(90deg); /* Rotate the button icon on click */
+  }
+}
+
+@media screen and (min-width: 580px) and (max-width: 650px) {
+  .search-bar {
+    width: 200px;
+  }
+  .logo {
+    top: 20px;
+    left: 10px;
+  }
+
+  .menu-button {
+    top: 20px;
+    right: 20px;
+  }
+
+  .social-icons {
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust to below the menu button */
+    right: -30px;
+    background: radial-gradient(
+      circle at 50% 50%,
+      /* Centered radial gradient */ rgba(255, 255, 255, 0.8) 0%,
+      /* Bright white center for the cloud */ rgba(255, 255, 255, 0.5) 30%,
+      /* Lightening effect moving outwards */ rgba(135, 206, 235, 0.7) 70%,
+      /* Light blue sky color blending into the cloud */ rgba(135, 206, 235, 1)
+        100% /* Sky blue background */
+    );
+    padding: 30px 20px 15px 20px; /* Add padding for spacing inside the menu */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft drop shadow for depth */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth animations */
+    transform: translateY(-10px); /* Slight upward transform when hidden */
+    opacity: 0; /* Invisible by default */
+    z-index: 1000; /* Ensure it's on top of other elements */
+  }
+
+  .social-icons.active {
+    display: flex; /* Show social icons when menu is active */
+    transform: translateY(0); /* Reset transform when active */
+    opacity: 1; /* Make it fully visible */
+  }
+
+  /* Menu button styles */
+  .menu-button {
+    display: block; /* Show menu button on smaller screens */
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    width: 50px; /* Size of the button */
+    height: 50px;
+    background: radial-gradient(
+      circle at 50% 50%,
+      /* Centered radial gradient */ rgba(255, 255, 255, 0.8) 0%,
+      /* Bright white center for the cloud */ rgba(255, 255, 255, 0.5) 30%,
+      /* Lightening effect moving outwards */ rgba(135, 206, 235, 0.7) 70%,
+      /* Light blue sky color blending into the cloud */ rgba(135, 206, 235, 1)
+        100% /* Sky blue background */
+    );
+    border: none; /* Remove default border */
+    border-radius: 50%; /* Make the button circular */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
+    cursor: pointer; /* Change cursor to pointer for interactivity */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth animations */
+    z-index: 1100; /* Ensure button is on top of other elements */
+  }
+
+  .menu-button:active {
+    transform: scale(0.95); /* Slightly shrink button on click for feedback */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Softer shadow when clicked */
+  }
+
+  .menu-button img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease; /* Smooth rotation effect */
+  }
+
+  .menu-button:active img {
+    transform: rotate(90deg); /* Rotate the button icon on click */
+  }
+}
+
 /* Responsive styling */
-@media screen and (max-width: 1240px) {
+@media screen and (min-width: 650px) and (max-width: 1240px) {
+  .logo {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+
   .social-icons {
     flex-direction: column;
     position: absolute;

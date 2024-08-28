@@ -1,3 +1,4 @@
+import React from "react";
 import "./LandingPage.css";
 import logo from "../IMAGENS/LOGO/LOGOTIPO.webp";
 import HeaderSocialMedia from "./HeaderSocialMedia/HeaderSocialMedia";
@@ -11,10 +12,18 @@ function LandingPage() {
   const location = useLocation();
   const { user } = location.state || {};
 
+  // Determine logo size based on screen width
+  const logoSize = window.innerWidth < 1024 ? "105px" : "160px"; // 105px if width < 1024px, else 160px
+
   if (user == null) {
     return (
       <>
-        <img className="logo" src={logo} alt="Logotipo" />
+        <img
+          className="logo"
+          src={logo}
+          alt="Logotipo"
+          style={{ width: logoSize }}
+        />
 
         {/* ESPAÇO PESQUISA */}
         <SearchBar user={user} />
@@ -29,7 +38,12 @@ function LandingPage() {
   } else {
     return (
       <>
-        <img className="logo" src={logo} alt="Logotipo" />
+        <img
+          className="logo"
+          src={logo}
+          alt="Logotipo"
+          style={{ width: logoSize }}
+        />
 
         {/* ESPAÇO PESQUISA */}
         <SearchBar user={user} />

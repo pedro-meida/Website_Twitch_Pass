@@ -11,7 +11,7 @@ const UserProfile = ({ user }) => {
   useEffect(() => {
     const fetchProfileImage = async () => {
       try {
-        // Passo 1: Get OAuth token
+        // Step 1: Get OAuth token
         const tokenResponse = await fetch(
           `${twitchTokenUrl}?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`,
           { method: "POST" }
@@ -20,7 +20,7 @@ const UserProfile = ({ user }) => {
         const tokenData = await tokenResponse.json();
         const accessToken = tokenData.access_token;
 
-        // Passo 2: Fetch user data diretamente da Twitch API
+        // Step 2: Fetch user data directly from Twitch API
         const userResponse = await fetch(
           `${twitchUserApiUrl}?login=${user.UserName}`,
           {
@@ -34,7 +34,6 @@ const UserProfile = ({ user }) => {
         if (userResponse.ok) {
           const userData = await userResponse.json();
           if (userData.data.length > 0) {
-            console.log(userData);
             setProfileImageUrl(userData.data[0].profile_image_url);
           }
         } else {
@@ -49,12 +48,17 @@ const UserProfile = ({ user }) => {
   }, [user.UserName]);
 
   return (
-    <>
-      <img className="user-profile" src={profileImageUrl} alt="User Profile" />
-      <p className="user-name">{user.UserName}</p>
-
-      <p className="user-level">Nível {user.Level}</p>
-    </>
+    <div className="user-profile-container">
+      <img
+        className="user-profile-image"
+        src={profileImageUrl}
+        alt="User Profile"
+      />
+      <div className="user-profile-details">
+        <p className="user-name">{user.UserName}</p>
+        <p className="user-level">Level {user.Level}</p>
+      </div>
+    </div>
   );
 };
 

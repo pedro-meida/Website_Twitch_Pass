@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 
 const SliderPass = ({ lvl, imageData }) => {
   const [currentSet, setCurrentSet] = useState(0);
-  const [imagesPerSet, setImagesPerSet] = useState(10); // State to control number of images per set
+  const [imagesPerSet, setImagesPerSet] = useState(10); // Default to 10
 
   // Effect to handle window resize and adjust images per set
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 1024) {
+      if (window.innerWidth < 780) {
+        setImagesPerSet(3);
+      } else if (window.innerWidth >= 780 && window.innerWidth <= 1400) {
         setImagesPerSet(5);
       } else {
         setImagesPerSet(10);
