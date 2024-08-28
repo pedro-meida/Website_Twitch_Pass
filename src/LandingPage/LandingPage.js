@@ -5,34 +5,34 @@ import SearchBar from "./SearchBar/SearchBar";
 import SliderPass from "./SliderPass/SliderPass";
 import UserProfile from "./UserProfile/UserProfile";
 import { imageData } from "./imageData";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 function LandingPage() {
   const location = useLocation();
   const { user } = location.state || {};
 
-  if (user == null) { 
+  if (user == null) {
     return (
-      <div>
-        <img className="logo" src={logo} alt="Logotipo"/>
+      <>
+        <img className="logo" src={logo} alt="Logotipo" />
 
         {/* ESPAÇO PESQUISA */}
-        <SearchBar user={user}/>
+        <SearchBar user={user} />
 
         {/* ESPAÇO REDES SOCIAIS */}
         <HeaderSocialMedia />
 
         {/* ESPAÇO SLIDER */}
         <SliderPass lvl={50} imageData={imageData} />
-      </div>
+      </>
     );
   } else {
     return (
-      <div>
+      <>
         <img className="logo" src={logo} alt="Logotipo" />
 
         {/* ESPAÇO PESQUISA */}
-        <SearchBar user={user}/>
+        <SearchBar user={user} />
 
         {/* ESPAÇO REDES SOCIAIS */}
         <HeaderSocialMedia />
@@ -41,8 +41,8 @@ function LandingPage() {
         <UserProfile user={user} />
 
         {/* ESPAÇO SLIDER */}
-        <SliderPass lvl={user.level} imageData={imageData} />
-      </div>
+        <SliderPass lvl={user.Level} imageData={imageData} />
+      </>
     );
   }
 }

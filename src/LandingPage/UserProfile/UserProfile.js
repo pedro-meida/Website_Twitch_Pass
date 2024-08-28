@@ -21,17 +21,20 @@ const UserProfile = ({ user }) => {
         const accessToken = tokenData.access_token;
 
         // Passo 2: Fetch user data diretamente da Twitch API
-        const userResponse = await fetch(`${twitchUserApiUrl}?login=${user.userName}`, {
-          headers: {
-            "Authorization": `Bearer ${accessToken}`,
-            "Client-Id": clientId,
-          },
-        });
+        const userResponse = await fetch(
+          `${twitchUserApiUrl}?login=${user.UserName}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Client-Id": clientId,
+            },
+          }
+        );
 
         if (userResponse.ok) {
           const userData = await userResponse.json();
           if (userData.data.length > 0) {
-            console.log(userData)
+            console.log(userData);
             setProfileImageUrl(userData.data[0].profile_image_url);
           }
         } else {
@@ -43,14 +46,14 @@ const UserProfile = ({ user }) => {
     };
 
     fetchProfileImage();
-  }, [user.userName]);
-  
+  }, [user.UserName]);
+
   return (
     <>
-      <img className="user-profile" src={profileImageUrl} alt="User Profile"/>
-      <p className="user-name">{user.userName}</p>
+      <img className="user-profile" src={profileImageUrl} alt="User Profile" />
+      <p className="user-name">{user.UserName}</p>
 
-      <p className="user-level">Nível {user.level}</p>
+      <p className="user-level">Nível {user.Level}</p>
     </>
   );
 };

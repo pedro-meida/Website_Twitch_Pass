@@ -15,7 +15,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  /* Alinha o conteúdo no fundo da página */
 }
 
 /* Estilo para o logotipo */
@@ -30,55 +29,60 @@ body {
   height: 160px;
 }
 
+/* Header social media container */
+.header-social-media {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+}
+
+/* Menu button for smaller screens */
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-button img {
+  width: 60px;
+  height: 60px;
+}
+
 /* Estilo para as redes sociais */
 .social-icons {
   position: absolute;
   top: 40px;
-  /* Ajuste conforme necessário para alinhar com o topo */
   right: 60px;
-  /* Ajuste conforme necessário para alinhar com a direita */
   display: flex;
   align-items: center;
 }
 
 .social-icons a {
   margin-left: 10px;
-  /* Espaçamento entre os ícones das redes sociais */
 }
 
 .social-icons img {
   width: 40px;
-  /* Tamanho dos ícones das redes sociais */
   height: 40px;
   opacity: 0.7;
-  /* Opacidade para os ícones (opcional) */
   transition: opacity 0.3s ease;
-  /* Transição suave da opacidade (opcional) */
 }
 
 .social-icons img:hover {
   opacity: 1;
-  /* Aumenta a opacidade ao passar o mouse (opcional) */
 }
 
 /* Estilo para a barra de pesquisa */
 .search-bar {
   position: absolute;
   top: 40px;
-  /* Ajuste conforme necessário para alinhar com o topo */
   left: 50%;
-  /* Posiciona a barra de pesquisa no centro horizontal */
   transform: translateX(-50%);
-  /* Centraliza horizontalmente */
-  background-color: rgba(255,
-      255,
-      255,
-      1);
-  /* Cor de fundo*/
+  background-color: rgba(255, 255, 255, 1);
   padding: 10px 20px;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Sombra suave */
 }
 
 .search-bar form {
@@ -88,7 +92,6 @@ body {
 
 .search-bar input[type="text"] {
   width: 300px;
-  /* Largura da caixa de texto */
   padding: 8px;
   font-size: 16px;
   border: none;
@@ -104,16 +107,13 @@ body {
   align-items: center;
   flex-direction: column;
   margin-bottom: 100px;
-  /* Ajusta a distância do fundo da página */
 }
 
 /* Estilo da grade de imagens */
 .image-grid {
-  display: flex;
-  grid-template-columns: repeat(10, 140px);
+  display: grid;
   grid-template-rows: repeat(2, auto);
   grid-gap: 40px 10px;
-  /* Espaço entre as imagens */
 }
 
 /* Estilo dos paralelogramas */
@@ -128,22 +128,29 @@ body {
   overflow: hidden;
 }
 
-.paralelogramo::before {
-  content: '';
+.paralelogramo::before,
+.paralelogramo::after {
+  content: "";
   position: absolute;
   background-color: white;
   z-index: 1;
+}
+
+.paralelogramo::before {
+  width: 60px;
+  height: 22px;
+  top: -2px;
+  left: -2px;
   border-radius: 0 0 25% 0;
 }
 
 .paralelogramo::after {
-  content: '';
-  position: absolute;
-  background-color: white;
-  z-index: 1;
+  width: 45px;
+  height: 26px;
+  bottom: -2px;
+  right: -2px;
   border-radius: 25% 0 0 0;
 }
-
 
 .paralelogramo .top-left,
 .paralelogramo .bottom-right {
@@ -153,35 +160,14 @@ body {
   transform: skew(12deg);
 }
 
-.paralelogramo::before {
-  width: 60px;
-  height: 22px;
-  top: -2px;
-  left: -2px;
-}
-
-.paralelogramo::after {
-  width: 45px;
-  height: 26px;
-  bottom: -2px;
-  right: -2px;
-}
-
-.paralelogramo::before .top-left {
-  width: 60px;
-  height: 22px;
-  top: -2px;
-  left: -2px;
-}
-
 .paralelogramo .top-left {
-  font-family: 'Alien Encounters Solid';
+  font-family: "Alien Encounters Solid";
   top: 2px;
   left: 8px;
 }
 
 .paralelogramo .bottom-right {
-  font-family: 'Alien Encounters Solid';
+  font-family: "Alien Encounters Solid";
   font-size: large;
   bottom: 0px;
   right: 10px;
@@ -219,23 +205,11 @@ body {
   left: 50%;
   bottom: 50%;
   transform: translateX(-50%);
-  /* Centraliza horizontalmente */
   width: 150px;
   border-radius: 50%;
 }
 
-.user-name {
-  background-color: red;
-  font-family: "Arial", sans-serif;
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  left: 50%;
-  bottom: 44%;
-  transform: translateX(-50%);
-  /* Centraliza horizontalmente */
-}
-
+.user-name,
 .user-level {
   background-color: red;
   font-family: "Arial", sans-serif;
@@ -243,7 +217,139 @@ body {
   font-size: 20px;
   position: absolute;
   left: 50%;
-  bottom: 41%;
   transform: translateX(-50%);
-  /* Centraliza horizontalmente */
+}
+
+.user-name {
+  bottom: 44%;
+}
+
+.user-level {
+  bottom: 41%;
+}
+
+/* Media Queries */
+
+/* estilo para ecrãs de telemóvel */
+@media screen and (max-width: 1024px) {
+  .image-grid {
+    grid-template-columns: repeat(5, 130px);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 20px 5px;
+  }
+
+  .logo img {
+    width: 70px; /* Smaller width for mobile devices */
+    height: 110px; /* Smaller height for mobile devices */
+  }
+}
+
+/* estilo para ecrãs de tablet */
+@media screen and (min-width: 1024px) and (max-width: 1399px) {
+  .image-grid {
+    grid-template-columns: repeat(5, 130px);
+    grid-template-rows: repeat(2, 95px);
+  }
+}
+
+/* estilo para ecrãs maiores */
+@media screen and (min-width: 1400px) and (max-width: 1649px) {
+  .image-grid {
+    grid-template-columns: repeat(10, 110px);
+  }
+}
+
+/* estilo para ecrãs muito grandes */
+@media screen and (min-width: 1650px) and (max-width: 1919px) {
+  .image-grid {
+    grid-template-columns: repeat(10, 130px);
+  }
+}
+
+/* estilo para ecrãs ultra largos */
+@media screen and (min-width: 1920px) {
+  .image-grid {
+    grid-template-columns: repeat(10, 150px);
+  }
+}
+
+/* Media queries for larger screens */
+@media screen and (min-width: 1241px) {
+  .social-icons {
+    display: flex; /* Display social icons normally on larger screens */
+  }
+
+  .menu-button {
+    display: none; /* Hide menu button on larger screens */
+  }
+}
+
+/* Responsive styling */
+@media screen and (max-width: 1240px) {
+  .social-icons {
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust to below the menu button */
+    right: 10px;
+    background: radial-gradient(
+      circle at 50% 50%,
+      /* Centered radial gradient */ rgba(255, 255, 255, 0.8) 0%,
+      /* Bright white center for the cloud */ rgba(255, 255, 255, 0.5) 30%,
+      /* Lightening effect moving outwards */ rgba(135, 206, 235, 0.7) 70%,
+      /* Light blue sky color blending into the cloud */ rgba(135, 206, 235, 1)
+        100% /* Sky blue background */
+    );
+    padding: 30px 20px 15px 20px; /* Add padding for spacing inside the menu */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft drop shadow for depth */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth animations */
+    transform: translateY(-10px); /* Slight upward transform when hidden */
+    opacity: 0; /* Invisible by default */
+    z-index: 1000; /* Ensure it's on top of other elements */
+  }
+
+  .social-icons.active {
+    display: flex; /* Show social icons when menu is active */
+    transform: translateY(0); /* Reset transform when active */
+    opacity: 1; /* Make it fully visible */
+  }
+
+  /* Menu button styles */
+  .menu-button {
+    display: block; /* Show menu button on smaller screens */
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    width: 50px; /* Size of the button */
+    height: 50px;
+    background: radial-gradient(
+      circle at 50% 50%,
+      /* Centered radial gradient */ rgba(255, 255, 255, 0.8) 0%,
+      /* Bright white center for the cloud */ rgba(255, 255, 255, 0.5) 30%,
+      /* Lightening effect moving outwards */ rgba(135, 206, 235, 0.7) 70%,
+      /* Light blue sky color blending into the cloud */ rgba(135, 206, 235, 1)
+        100% /* Sky blue background */
+    );
+    border: none; /* Remove default border */
+    border-radius: 50%; /* Make the button circular */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
+    cursor: pointer; /* Change cursor to pointer for interactivity */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth animations */
+    z-index: 1100; /* Ensure button is on top of other elements */
+  }
+
+  .menu-button:active {
+    transform: scale(0.95); /* Slightly shrink button on click for feedback */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Softer shadow when clicked */
+  }
+
+  .menu-button img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease; /* Smooth rotation effect */
+  }
+
+  .menu-button:active img {
+    transform: rotate(90deg); /* Rotate the button icon on click */
+  }
 }

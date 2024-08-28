@@ -1,52 +1,50 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import the toastify CSS
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
 
 const SearchBar = () => {
   const [data, setData] = useState("");
   const navigate = useNavigate();
 
+  // Function to handle form submission and fetch user data
   const getUser = async (e) => {
     e.preventDefault();
 
-    // Prevent fetch request if input is empty
     if (!data.trim()) {
       toast.warn("Nenhum Utilizador fornecido.");
-      navigate('/', { state: { user: null } });
+      navigate("/", { state: { user: null } });
       return;
     }
 
-    var requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-
     try {
-      const response = await fetch(`http://localhost:5122/api/User/${data}`, requestOptions);
-      
-      // If response is not ok, stop further processing
-      if (!response.ok) {
-        toast.error("Utilizador não encontrado.");
-        
-        return;
+      const response = await axios.get(
+        `https://perplera.pt/getUser.php?username=${data}`
+      );
+
+      const userData = response.data;
+
+      // Check if the response contains an error or user not found
+      if (userData.error) {
+        toast.error(userData.error); // Show error notification if user not found
+        navigate("/", { state: { user: null } });
+      } else {
+        navigate("/", { state: { user: userData } });
       }
-
-      const userData = await response.json();
-
-      console.log(userData);
-      
-      navigate('/', { state: { user: userData } });
-
-    } catch (err) {
-      console.log("Error:", err.message);
+    } catch (error) {
+      console.error(
+        "Error fetching user data:",
+        error.response ? error.response.data : error.message
+      );
+      toast.error("Erro ao buscar dados do utilizador."); // Show error notification if request fails
     }
   };
+
   return (
     <>
       <div className="search-bar">
-      <form onSubmit={getUser}>
+        <form onSubmit={getUser}>
           <input
             type="text"
             name="userName"
@@ -57,7 +55,7 @@ const SearchBar = () => {
         </form>
       </div>
 
-      <ToastContainer 
+      <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
