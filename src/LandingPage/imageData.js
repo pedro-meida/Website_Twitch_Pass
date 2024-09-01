@@ -288,7 +288,7 @@ export const imageData = [
     id: 34,
     image: lvl34,
     title: "Nível 34",
-    description: "O décimo quarto nível de um espaço.",
+    description: "Riso do Nelson (Simpsons).",
     isFree: true,
   },
   {
